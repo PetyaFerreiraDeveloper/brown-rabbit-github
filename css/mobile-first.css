@@ -1,7 +1,7 @@
 /* Variables */
 :root {
     --ff-primary: 'Cormorant Garamond', serif;
-
+    --fs-mobile: 1.2rem;
 }
 
 * {
@@ -19,7 +19,7 @@ h2 {
 }
 
 p {
-    font-size: 1.2rem;
+    font-size: var(--fs-mobile)
 }
 
 footer {
@@ -70,6 +70,7 @@ header {
     left: 0;
     padding: 0;
     margin: 0;
+    width: 100%;
     max-width: 400px; 
 }
 
@@ -161,6 +162,7 @@ header {
     margin: 1rem 0;
     padding: 1rem;
     letter-spacing: 0.1rem;
+    font-size: var(--fs-mobile);
 }
 
 .mobile-nav-list li:hover {
@@ -208,20 +210,16 @@ header {
     }
 }
 
-@media (min-width: 1200px) {
-        font-size: 3rem;
-    };
-
-
 .slider-social-icons,
 .contact-social-icons {
     display: flex;
     justify-content: space-evenly;
+    
 }
 
 .slider-social-icons img,
 .contact-social-icons img {
-    padding: 1rem;
+    padding: 0.5rem;
     cursor: pointer;
 }
 
@@ -279,6 +277,7 @@ header {
 
 .item li {
     margin: 0.5rem 0 0 0;
+    font-size: var(--fs-mobile);
 }
 
 .news {
