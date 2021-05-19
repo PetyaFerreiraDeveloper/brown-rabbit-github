@@ -51,11 +51,13 @@ header {
     grid-template-areas: "logo logo"
                          "menu search";
     background: black;
+}
 
-    @media (min-width: 768px) {
+@media (min-width: 768px) {
+    header {
         grid-template-areas: "logo search"
                              "menu menu";
-    };
+    }
 }
 
 .main-logo {
