@@ -1,11 +1,19 @@
+/* screens: 375px, 768px and 1200px */
+
 /* Variables */
 :root {
     --ff-primary: 'Cormorant Garamond', serif;
-    --fs-mobile: 1.2rem;
+    --fs-mobile: 1.3rem;
+    --fs-ipad: 1.5rem;
+    --fs-desktop: 2rem;
 }
 
 * {
     box-sizing: border-box;
+}
+
+html {
+    width: 100vw;
 }
 
 body {
@@ -18,7 +26,10 @@ h2 {
     font-size: 1.5rem;
 }
 
-p {
+p,
+a,
+.item li,
+.search input {
     font-size: var(--fs-mobile)
 }
 
@@ -49,7 +60,7 @@ header {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "logo logo"
-                         "menu search";
+                         "search menu";
     background: black;
 }
 
@@ -58,6 +69,11 @@ header {
         grid-template-areas: "logo search"
                              "menu menu";
     }
+   
+    #hamburger-bars {
+        display: none;
+    }
+   
 }
 
 .main-logo {
@@ -76,7 +92,8 @@ header {
 
 .hamburger {
     grid-area: menu;
-    margin: 0 1.5rem 1rem 1.5rem;
+    margin: 1rem 1.5rem;
+    justify-self: end;
 }
 
 .fas.fa-bars.fa-2x {
@@ -87,24 +104,21 @@ header {
     cursor: pointer;
 }
 
-/* .hidden {
-    display: none;
-} */
-
 .main-nav {
     display: none;
 }
 
 .search {
+    display: flex;
     grid-area: search;
-    justify-self: self-end;
+    /* justify-self: end; */
+    /* align-items: center; */
     background: white;
-    /* width: max-content; */
     border-radius: 10px;
-    margin: 0 1.5rem 1rem 1.5rem;
+    margin: 1rem 1.5rem;
     padding: 0.1rem 0.5rem 0.1rem 0.1rem;
+    max-height: 50px;
 }
-
 
 .fas.fa-search {
     color: black;
@@ -114,23 +128,6 @@ header {
 .search input {
     border: none;
     outline: none;
-}
-
-.nav-list {
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    justify-content: space-between;
-    margin-bottom: 0.4rem;
-    padding-top: 1rem;
-    font-size: 0.7rem;
-    color: white;
-}
-
-.nav-list li {
-    padding: 0 0 0 0.5rem;
-    margin: 0;
-    text-transform: uppercase;
 }
 
 .mobile-nav {
@@ -151,7 +148,6 @@ header {
     list-style: none;
     padding-left: 0;
     margin: 10rem 1.5rem 0 1.5rem;
-
 }
 
 .mobile-nav-list li {
@@ -178,15 +174,6 @@ header {
     display: block;
 }
 
-/* main {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-template-rows: 3fr 4fr 2fr;
-    grid-template-areas: "slider slider"
-                         "news sidebar"
-                         "sponsors sponsors";
-} */
-
 .slider {
     background: black;
     margin-top: 0;
@@ -197,17 +184,10 @@ header {
     width: 100%;
 }
 
-
 .slider p {
     color: #888888;
-    font-size: 1.5rem;
     padding: 1rem;
-}
-
-@media (min-width: 768px) {
-    .slider p {
-        font-size: 2rem;
-    }
+    font-size: var(--fs-mobile);
 }
 
 .slider-social-icons,
@@ -259,7 +239,6 @@ header {
     margin: 0 1rem;
     text-decoration: none;
     color: rgb(3, 145, 180);
-    font-size: 1.5rem;
     cursor: pointer;
     padding: 2rem 0;
 }
@@ -285,12 +264,12 @@ header {
 }
 
 .news-article {
-   display: flex;
+    display: flex;
     margin-top: 1rem;
 }
 
 .news-article-image {
-    width: 200px;
+    width: 140px;
     grid-area: image;
 }
 
@@ -309,7 +288,6 @@ header {
 .news-article-posted {
     margin: 0;
     color:rgb(3, 145, 180);
-    font-size: 1rem;
 }
 
 .news-article-text {
@@ -386,7 +364,43 @@ header {
     color: #888888;
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 768px) {
+    p,
+    a,
+    .item li {
+        font-size: var(--fs-ipad);
+    }
+
+    h2 {
+        font-size: 1.7rem;
+    }
+    .search {
+        margin: 1rem;
+        font-size: var(--fs-ipad);
+    }
+    .search input {
+        font-size: var(--fs-ipad)
+    }
+    .main-nav {
+        grid-area: menu;
+        display: block;
+    }
+    .nav-list {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        justify-content: space-around;
+        padding-left: 0;
+        margin: 0.5rem;
+        font-size: var(--fs-ipad);
+        color: white;
+    }
+    .nav-list li {
+        padding: 0 0 0 0.5rem;
+        margin: 0;
+        text-transform: uppercase;
+        
+    }
     .slider p {
         font-size: 2rem;
     }
@@ -398,7 +412,7 @@ header {
     }
 }
 
-@media (min-width: 75rem) {
+@media (min-width: 1200px) {
     .slider p {
         font-size: 3rem;
     }

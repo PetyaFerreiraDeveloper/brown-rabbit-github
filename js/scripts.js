@@ -34,7 +34,7 @@ const news = [
         img: './img/article02.jpg',
         title: 'Nordic Barista Cup 2011 in Copenhagen',
         date: '22/1-2011',
-        description: 'Nordic Barista Cup 2011 will be held in Copenhagen, Denmark...'
+        description: 'Nordic Barista Cup 2011 will be held in Copenhagen...'
     },
     {
         id: 3,
@@ -55,7 +55,7 @@ const news = [
         img: './img/article02.jpg',
         title: 'Nordic Barista Cup 2011 ...',
         date: '22/1-2011',
-        description: 'Nordic Barista Cup 2011 will be held in Copenhagen, Denmark...'
+        description: 'Nordic Barista Cup 2011 will be held in Copenhagen...'
     },
     {
         id: 6,
@@ -76,7 +76,7 @@ const news = [
         img: './img/article02.jpg',
         title: 'Nordic Barista Cup 2011 ...',
         date: '22/1-2011',
-        description: 'Nordic Barista Cup 2011 will be held in Copenhagen, Denmark...'
+        description: 'Nordic Barista Cup 2011 will be held in Copenhagen...'
     },
     {
         id: 9,
@@ -97,7 +97,7 @@ const news = [
         img: './img/article02.jpg',
         title: 'Nordic Barista Cup 2011 ...',
         date: '22/1-2011',
-        description: 'Nordic Barista Cup 2011 will be held in Copenhagen, Denmark...'
+        description: 'Nordic Barista Cup 2011 will be held in Copenhagen...'
     },
     {
         id: 12,
@@ -118,7 +118,7 @@ const news = [
         img: './img/article02.jpg',
         title: 'Nordic Barista Cup 2011 ...',
         date: '22/1-2011',
-        description: 'Nordic Barista Cup 2011 will be held in Copenhagen, Denmark...'
+        description: 'Nordic Barista Cup 2011 will be held in Copenhagen...'
     },
     {
         id: 15,
