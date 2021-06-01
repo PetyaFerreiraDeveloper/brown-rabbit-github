@@ -194,7 +194,7 @@ header {
 .contact-social-icons {
     display: flex;
     justify-content: space-evenly;
-    
+    padding-bottom: 1rem;
 }
 
 .slider-social-icons img,
@@ -327,7 +327,7 @@ header {
 }
 
 .footer-wrapper {
-    padding: 1rem 0 2rem 0;
+    padding: 1rem 0;
     margin: 2rem 1rem 0 1rem;
     color: white;
 }
@@ -410,6 +410,9 @@ header {
     .mobile-nav-list li span{
         font-size: 2rem;
     }
+    .sponsors-images {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 @media (min-width: 1200px) {
@@ -421,5 +424,9 @@ header {
     }
     .mobile-nav-list li span{
         font-size: 3rem;
+    }
+
+    .sponsors-images {
+        grid-template-columns: repeat(6, 1fr);
     }
 }
