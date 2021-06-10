@@ -32,7 +32,7 @@ const news = [
     {
         id: 2,
         img: './img/article02.jpg',
-        title: 'Nordic Barista Cup 2011 in Copenhagen',
+        title: 'Nordic Barista Cup 2011 ...',
         date: '22/1-2011',
         description: 'Nordic Barista Cup 2011 will be held in Copenhagen...'
     },
@@ -45,14 +45,14 @@ const news = [
     },
     {
         id: 4,
-        img: './img/article01.jpg',
+        img: './img/article03.jpg',
         title: 'Wonderful Copenhagen 2011',
         date: '23/1-2011',
         description: 'The aim is to understand the science behind our sensory...'
     },
     {
         id: 5,
-        img: './img/article02.jpg',
+        img: './img/article01.jpg',
         title: 'Nordic Barista Cup 2011 ...',
         date: '22/1-2011',
         description: 'Nordic Barista Cup 2011 will be held in Copenhagen...'
@@ -66,7 +66,7 @@ const news = [
     },
     {
         id: 7,
-        img: './img/article01.jpg',
+        img: './img/article03.jpg',
         title: 'Wonderful Copenhagen 2011',
         date: '23/1-2011',
         description: 'The aim is to understand the science behind our sensory...'
@@ -80,7 +80,7 @@ const news = [
     },
     {
         id: 9,
-        img: './img/article03.jpg',
+        img: './img/article01.jpg',
         title: '2010 Winners: Sweden',
         date: '12/1-2011',
         description: 'Oh my goodness, the final night is here!...'
@@ -115,14 +115,14 @@ const news = [
     },
     {
         id: 14,
-        img: './img/article02.jpg',
+        img: './img/article01.jpg',
         title: 'Nordic Barista Cup 2011 ...',
         date: '22/1-2011',
         description: 'Nordic Barista Cup 2011 will be held in Copenhagen...'
     },
     {
         id: 15,
-        img: './img/article03.jpg',
+        img: './img/article02.jpg',
         title: '2010 Winners: Sweden',
         date: '12/1-2011',
         description: 'Oh my goodness, the final night is here!...'
@@ -255,6 +255,7 @@ const flickrImages = [
     },
 ];
 
+//***** RANDOM SLIDER IMAGE *****//
 // lets set an index for choosing a slider image
 let currentItem = 0;
 
@@ -269,25 +270,111 @@ function randomImage() {
     img.src = highlight.img;
 }
 
-// lets get the articles
-let newsSection = document.getElementById('news');
 
-function printArticle() {
-    let articles = news.map(article => 
-        `<article class="news-article" id=${article.id}>
-            <div class="news-articles-images">
-                <img class="news-article-image" src=${article.img} alt="Article image">
-            </div>
-            <div class="news-articles-details">
-                <h2>${article.title}</h2>
-                <p class="news-article-posted">Posted: ${article.date}</p>
-                <p class="news-article-text">${article.description}</p>
-                <button class="read-more">Read more</button>
-            </div>
-        </article>`
-    ).join('');
-    newsSection.innerHTML = articles;
+// let newsSection = document.getElementById('news');
+
+// function printArticle() {
+//     let articles = news.map(article => 
+//         `<article class="news-article" id=${article.id}>
+//             <div class="news-articles-images">
+//                 <img class="news-article-image" src=${article.img} alt="Article image">
+//             </div>
+//             <div class="news-articles-details">
+//                 <h2>${article.title}</h2>
+//                 <p class="news-article-posted">Posted: ${article.date}</p>
+//                 <p class="news-article-text">${article.description}</p>
+//                 <button class="read-more">Read more</button>
+//             </div>
+//         </article>`
+//     ).join('');
+//     newsSection.innerHTML = articles;
+// }
+
+// lets get the articles
+let listElement = document.getElementById('list');
+let paginationElement = document.getElementById('pagination');
+
+let currentPage = 1;
+let rows = 3;
+let pageCount = Math.ceil(news.length / rows);
+let firstButton = document.querySelector('.first-button');
+
+function displayList(items, wrapper, rowsPerPage, page) {
+    wrapper.innerHTML = '';
+    page--;
+
+    let start = rowsPerPage * page;
+    let end = start + rowsPerPage;
+    let paginatedItems = items.slice(start, end);
+    function printArticle() {
+        let articles = paginatedItems.map(article => 
+            `<article class="news-article" id=${article.id}>
+                <div class="news-articles-images">
+                    <img class="news-article-image" src=${article.img} alt="Article image">
+                </div>
+                <div class="news-articles-details">
+                    <h2>${article.title}</h2>
+                    <p class="news-article-posted">Posted: ${article.date}</p>
+                    <p class="news-article-text">${article.description}</p>
+                    <button class="read-more">Read more</button>
+                </div>
+            </article>`
+        ).join('');
+        listElement.innerHTML = articles;
+    }
+    printArticle();
 }
+
+displayList(news, listElement, rows, currentPage);
+
+function setupPagination (items, wrapper, rowsPerPage) {
+    // wrapper.innerHTML = '';
+    // let pageCount = Math.ceil(items.length / rowsPerPage);
+    
+
+    for (let i = 1; i <= pageCount; i++) {
+        let btn = paginationButton(i, items);
+        wrapper.appendChild(btn);
+    }
+};
+
+function paginationButton (page, items) {
+    let button = document.createElement('button');
+    button.innerText = page;
+
+    if(currentPage === page) button.classList.add('active');
+
+    button.addEventListener('click', function() {
+        currentPage = page;
+        displayList(news, listElement, rows, currentPage);
+        firstButton.innerHTML = `Page ${currentPage} of ${pageCount}`;
+
+        let currentBtn = document.querySelector('.pagination button.active');
+        currentBtn.classList.remove('active');
+        button.classList.add('active');
+    });
+    return button;
+}
+
+setupPagination(news, paginationElement, rows);
+
+// function printArticle() {
+//         let articles = news.map(article => 
+//             `<article class="news-article" id=${article.id}>
+//                 <div class="news-articles-images">
+//                     <img class="news-article-image" src=${article.img} alt="Article image">
+//                 </div>
+//                 <div class="news-articles-details">
+//                     <h2>${article.title}</h2>
+//                     <p class="news-article-posted">Posted: ${article.date}</p>
+//                     <p class="news-article-text">${article.description}</p>
+//                     <button class="read-more">Read more</button>
+//                 </div>
+//             </article>`
+//         ).join('');
+//         newsSection.innerHTML = articles;
+//     }
+
 
 // lets get the sponsors logos
 let sponsorsSection = document.getElementById('sponsors');
@@ -315,8 +402,9 @@ function loadFlickr() {
 
 // load all images when DOM Content is loaded
 window.addEventListener('DOMContentLoaded', function() {
-    randomImage()
-    printArticle();
+    randomImage();
+    firstButton.innerHTML = `Page 1 of ${pageCount}`;
+    //printArticle();
     loadSponsors();
     loadFlickr();
     });
