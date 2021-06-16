@@ -209,46 +209,34 @@ header {
 }
 
 .side-bar-items {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "title item"
-                         "link item";
+    display: flex;
+    flex-direction: row;
+    margin: 1rem 1rem;
+    align-items: center;
 }
 
 .side-bar h2 {
-    grid-area: title;
     align-self: center;
-    margin: 0 0.5rem 0.5rem 1rem;
-    font-weight: 400;
 }
-
 .side-bar .item {
-    grid-area: item;
-    margin: 0 1rem;
+    margin-left: 2rem;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
 }
 
-.side-bar .item p {
-    margin: 0.5rem 0;
+.side-bar-items p {
+    margin: 0;
 }
 
 .side-bar a {
-    grid-area: link;
-    margin: 0 1rem;
     text-decoration: none;
     color: rgb(3, 145, 180);
     cursor: pointer;
 }
 
-.side-bar p {
-    grid-area: link;
-}
-
 .side-bar a:hover {
     filter: brightness(65%);
-}
-
-.side-bar-items p {
-    margin: 0 0 0 1rem;
 }
 
 .side-bar-items ul {
@@ -258,7 +246,7 @@ header {
 }
 
 .item li {
-    margin: 0.5rem 0 0 0;
+    margin: 0;
     font-size: var(--fs-mobile);
 }
 
@@ -638,20 +626,19 @@ header {
     } 
 
     .side-bar {
-        padding-top: 1rem;  
+        padding: 1rem;  
     }
 
     .side-bar-items {
         display: flex;
         flex-direction: column;
         text-align: left;
-        margin-bottom: 2rem;
+        margin: 1rem 0 2rem 1rem;
     }
 
-    .side-bar-items .item, 
-    .side-bar-items {
+    .side-bar-items .item {
         align-self: flex-start;
-        margin-top: 0;
+        margin: 0;
     }
     
     .side-bar-items h2,
@@ -674,29 +661,16 @@ header {
     .side-bar-items a,
     .news-articles-details p {
         font-size: 1.2rem;
-        padding: 0;
     }
 
-    .side-bar-items a {
-        margin-top: 0;
-    }
-
-    .side-bar-items p {
-        margin: 0 1rem;
-    }
-
-    .side-bar-items .item p {
-        margin: 0.1rem 0;
-    }
-
-    .side-bar-items li {
-        margin-top: 0;
+    .item a {
+        padding-top: 5rem;
     }
 
     .sponsors h2 {
         text-align: left;
     }
-    
+
     .sponsors-images {
         grid-template-columns: repeat(6, 1fr);
     }
