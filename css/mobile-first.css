@@ -1,4 +1,7 @@
 /* screens: 375px, 768px and 1200px */
+.highlighted {
+    background-color: gray;
+}
 
 /* Variables */
 :root {
@@ -95,6 +98,10 @@ header {
     display: none;
 }
 
+.main-nav .nav-list li {
+    cursor: pointer;
+}
+
 .search {
     display: flex;
     grid-area: search;
@@ -111,7 +118,7 @@ header {
 
 .fas.fa-search {
     color: black;
-    margin-top: 0.3rem;
+    margin-top: 0.2rem;
     font-size: 1.5rem;
 }
 
@@ -119,6 +126,10 @@ header {
     border: none;
     outline: none;
     max-width: 7rem;
+}
+
+.search input:focus::placeholder {
+    color: transparent;
 }
 
 .mobile-nav {

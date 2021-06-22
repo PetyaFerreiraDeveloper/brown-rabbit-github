@@ -255,6 +255,49 @@ const flickrImages = [
     },
 ];
 
+//***** SEARCH FOR ITEMS *****//
+const SEARCH = document.getElementById('search-item');
+
+SEARCH.addEventListener('keyup', (e) => {
+    // lets grab the users text and convert it to lower case
+    let searchText = e.target.value.toLowerCase();
+    // lets grab all paragraphs on the page
+    let paragraphs = document.querySelectorAll('.news-article-text');
+    // paragraphs is an HTML collection. lets convert it to an array so we can access the forEach() method
+    let paragraphsArray = Array.from(paragraphs);
+    // loop through each paragraph
+
+    paragraphsArray.forEach((paragraph) => {
+        let textCon = paragraph.textContent;
+        // convert the text into lower case
+        let textConLower = textCon.toLowerCase();
+        
+        // use indexOf to see if the text can be found on the page. If nothing is found, value of -1 is returned and we can hide the item
+        // if (textConLower.indexOf(searchText) === -1) {
+        //     paragraph.style.display = 'none';
+        // } else {
+        //     paragraph.style.display = 'block';
+        // }
+        
+        if (textConLower.indexOf(searchText) !== -1) {
+            // the highlight details
+            let span = document.createElement('span');
+            let start = textConLower.indexOf(searchText);
+            let end = start + searchText.length;
+            let subs = textConLower.substring(start, end);
+
+            span.textContent = subs;
+            
+            paragraph.innerHTML = textCon.substring(0, start) + '<span class="highlighted">' + subs + '</span>' + textCon.substring(end);
+            
+        }
+
+    })
+
+})
+
+
+
 //***** RANDOM SLIDER IMAGE *****//
 // lets set an index for choosing a slider image
 let currentItem = 0;
@@ -271,13 +314,13 @@ function randomImage() {
 }
 
 // load all images when DOM Content is loaded
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function () {
     randomImage();
     firstButton.innerHTML = `Page 1 of ${pageCount}`;
     //printArticle();
     loadSponsors();
     loadFlickr();
-    });
+});
 
 // open the mobile nav 
 
@@ -285,14 +328,14 @@ let mobileNav = document.getElementById('mobile-nav');
 let hamburgerBars = document.getElementById('hamburger-bars');
 let backdrop = document.querySelector('.backdrop');
 
-hamburgerBars.addEventListener('click', function() {
+hamburgerBars.addEventListener('click', function () {
     mobileNav.classList.add('open');
     backdrop.classList.add('open');
 });
 
 // hide the mobile nav
 
-backdrop.addEventListener('click', function() {
+backdrop.addEventListener('click', function () {
     mobileNav.classList.remove('open');
     backdrop.classList.remove('open');
 });
@@ -314,7 +357,7 @@ function displayList(items, wrapper, rowsPerPage, page) {
     let end = start + rowsPerPage;
     let paginatedItems = items.slice(start, end);
     function printArticle() {
-        let articles = paginatedItems.map(article => 
+        let articles = paginatedItems.map(article =>
             `<article class="news-article" id=${article.id}>
                 <div class="news-articles-images">
                     <img class="news-article-image" src=${article.img} alt="Article image">
@@ -335,7 +378,7 @@ function displayList(items, wrapper, rowsPerPage, page) {
 
 displayList(news, listElement, rows, currentPage);
 
-function setupPagination (items, wrapper, rowsPerPage) {
+function setupPagination(items, wrapper, rowsPerPage) {
     // wrapper.innerHTML = '';
     for (let i = 1; i <= pageCount; i++) {
         let btn = paginationButton(i, items);
@@ -343,13 +386,13 @@ function setupPagination (items, wrapper, rowsPerPage) {
     }
 };
 
-function paginationButton (page, items) {
+function paginationButton(page, items) {
     let button = document.createElement('button');
     button.innerText = page;
 
-    if(currentPage === page) button.classList.add('active');
+    if (currentPage === page) button.classList.add('active');
 
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function () {
         currentPage = page;
         displayList(news, listElement, rows, currentPage);
         firstButton.innerHTML = `Page ${currentPage} of ${pageCount}`;
@@ -382,7 +425,7 @@ function readMore(e) {
     };
 
     let newsIndex = target.id;
-    let article =  
+    let article =
         `<article class="news-article" id=${news[newsIndex].id}>
             <div class="news-articles-images">
                 <img class="news-article-image" src=${news[newsIndex].img} alt="Article image">
@@ -397,7 +440,7 @@ function readMore(e) {
 
 }
 
-backdrop.addEventListener('click', function() {
+backdrop.addEventListener('click', function () {
     readMoreOverlay.classList.remove('open');
     backdrop.classList.remove('open');
 });
@@ -406,11 +449,11 @@ backdrop.addEventListener('click', function() {
 let sponsorsSection = document.getElementById('sponsors');
 
 function loadSponsors() {
-    let sponsorLogo = sponsorsList.map(logo => 
+    let sponsorLogo = sponsorsList.map(logo =>
         `<div class="sponsor-image" id=${logo.id}>
         <img class="image" src=${logo.img} alt="logo image">
     </div>`
-    ).join('');          
+    ).join('');
     sponsorsSection.innerHTML = sponsorLogo;
 }
 
@@ -418,10 +461,11 @@ function loadSponsors() {
 let flickr = document.querySelector('.footer-flickr-images');
 
 function loadFlickr() {
-    let flickrImage = flickrImages.map(image => 
+    let flickrImage = flickrImages.map(image =>
         `<div class="flickr-image">
         <img src=${image.img} alt="Flickr image">
     </div>`
-        ).join('');
-        flickr.innerHTML = flickrImage;
+    ).join('');
+    flickr.innerHTML = flickrImage;
 }
+
