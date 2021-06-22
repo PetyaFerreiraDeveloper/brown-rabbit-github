@@ -259,8 +259,8 @@ const flickrImages = [
 const SEARCH = document.getElementById('search-item');
 
 SEARCH.addEventListener('keyup', (e) => {
-    // lets grab the users text and convert it to lower case
-    let searchText = e.target.value.toLowerCase();
+    // lets grab the users text and no need to convert it to lower case, because the reg exp doesnt need it
+    let searchText = e.target.value;
     // lets grab all paragraphs on the page
     let paragraphs = document.querySelectorAll('.news-article-text');
     // paragraphs is an HTML collection. lets convert it to an array so we can access the forEach() method
@@ -269,8 +269,8 @@ SEARCH.addEventListener('keyup', (e) => {
 
     paragraphsArray.forEach((paragraph) => {
         let textCon = paragraph.textContent;
-        // convert the text into lower case
-        let textConLower = textCon.toLowerCase();
+        // use reg exp to find and match the searched text. 
+        paragraph.innerHTML = textCon.replace(new RegExp(searchText, 'gi'), (match) => `<mark class="highlighted">${match}</mark>`);
         
         // use indexOf to see if the text can be found on the page. If nothing is found, value of -1 is returned and we can hide the item
         // if (textConLower.indexOf(searchText) === -1) {
@@ -279,18 +279,17 @@ SEARCH.addEventListener('keyup', (e) => {
         //     paragraph.style.display = 'block';
         // }
         
-        if (textConLower.indexOf(searchText) !== -1) {
-            // the highlight details
-            let span = document.createElement('span');
-            let start = textConLower.indexOf(searchText);
-            let end = start + searchText.length;
-            let subs = textConLower.substring(start, end);
+        // if (textConLower.indexOf(searchText) !== -1) {
+        //     // the highlight details
+        //     let span = document.createElement('span');
+        //     let start = textConLower.indexOf(searchText);
+        //     let end = start + searchText.length;
+        //     let subs = textConLower.substring(start, end);
 
-            span.textContent = subs;
+        //     span.textContent = subs;
+        //     paragraph.innerHTML = textCon.substring(0, start) + '<span class="highlighted">' + subs + '</span>' + textCon.substring(end);
             
-            paragraph.innerHTML = textCon.substring(0, start) + '<span class="highlighted">' + subs + '</span>' + textCon.substring(end);
-            
-        }
+        // }
 
     })
 
