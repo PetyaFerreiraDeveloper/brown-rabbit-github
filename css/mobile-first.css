@@ -141,7 +141,7 @@ header {
 }
 
 .search input {
-    border: none;
+    /* border: none; */
     outline: none;
     max-width: 7rem;
 }
@@ -433,7 +433,7 @@ header {
 
 .sponsors-images {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
 }
 
@@ -448,7 +448,7 @@ header {
 }
 
 .sponsor-image img {
-    width: 120px;
+    max-width: 120px;
 }
 
 .footer-wrapper {
@@ -484,7 +484,7 @@ header {
 }
 
 .flickr-image img {
-    width: 140px;
+    max-width: 140px;
 }
 
 .contact-details {
