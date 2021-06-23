@@ -141,9 +141,10 @@ header {
 }
 
 .search input {
-    /* border: none; */
+    border: none;
     outline: none;
     max-width: 7rem;
+    z-index: 3;
 }
 
 .search input:focus::placeholder {
