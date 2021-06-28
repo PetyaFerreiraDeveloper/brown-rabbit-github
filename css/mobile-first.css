@@ -387,6 +387,16 @@ header {
     filter: brightness(85%);
 }
 
+.close-read-more {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.2rem 0.5rem;
+    background: linear-gradient(#62acd3, #4681a0);
+    color: white;
+    cursor: pointer;
+}
+
 .pagination {
     margin: 2rem 0.5rem;
 }

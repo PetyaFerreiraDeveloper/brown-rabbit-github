@@ -411,10 +411,12 @@ let newsSection = document.getElementById('news');
 let readMoreButton = document.querySelectorAll('.read-more');
 let readMoreOverlay = document.getElementById('read-more-overlay');
 
+
 newsSection.addEventListener('click', readMore);
 
 function readMore(e) {
     let target = e.target;
+    
     // console.log('target', target)
     if (target.classList.contains('read-more')) {
         readMoreOverlay.classList.add('open');
@@ -433,10 +435,17 @@ function readMore(e) {
                 <h2>${news[newsIndex].title}</h2>
                 <p class="news-article-posted">Posted: ${news[newsIndex].date}</p>
                 <p class="news-article-text">${news[newsIndex].description}...</p>
+                <button class="close-read-more" id="close-read-more">Close</button>
             </div>
         </article>`
     readMoreOverlay.innerHTML = article;
 
+    let closeReadMoreBtn = document.getElementById('close-read-more');
+
+    closeReadMoreBtn.addEventListener('click', function () {
+        readMoreOverlay.classList.remove('open');
+        backdrop.classList.remove('open');
+    });
 }
 
 backdrop.addEventListener('click', function () {
