@@ -121,16 +121,13 @@ header {
 .search {
     display: flex;
     grid-area: search;
-    /* justify-self: end; */
-    /* align-items: center; */
     background: white;
     border-radius: 10px;
     margin: 1rem 1.5rem;
-    /* padding: 0.1rem 0.5rem 0.1rem 0.1rem; */
+    padding-right: 0.5rem;
     max-width: 10rem;
     max-height: 2rem;
     justify-self: left;
-    /* background-color: green; */
 }
 
 .fas.fa-search {
@@ -143,9 +140,7 @@ header {
     border: none;
     outline: none;
     max-width: 7rem;
-    /* padding-bottom: 1rem; */
     z-index: 3;
-    /* background-color: orange; */
 }
 
 .search input:focus::placeholder {
@@ -255,6 +250,7 @@ header {
 .side-bar h2 {
     align-self: center;
 }
+
 .side-bar .item {
     margin-left: 2rem;
     align-self: center;
