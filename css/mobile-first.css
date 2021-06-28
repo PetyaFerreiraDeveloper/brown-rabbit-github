@@ -347,13 +347,18 @@ header {
 }
 
 .news .read-more-overlay {
-    position: absolute;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: none;
     padding: 1rem;
     margin: 0 1rem 1rem -1rem;
     max-width: 960px;
+    max-height: 80vh;
     background-color: #fff;
     z-index: 102;
+    overflow-y: scroll;
 } 
 
 .news .read-more-overlay .news-article,
@@ -674,12 +679,13 @@ header {
     .news-articles-details {
         padding: 2rem 0;
     }
+
     .news-articles-details .read-more {
         font-size: 0.8rem;
     }
 
     .news .read-more-overlay {
-        position: absolute;
+        /* position: absolute; */
         display: none;
         padding: 1rem;
         margin: 0;
