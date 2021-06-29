@@ -1,3 +1,4 @@
+// export {news};
 const highlights = [
     {
         id: 1,
@@ -255,6 +256,56 @@ const flickrImages = [
     },
 ];
 
+//***** SEARCH FOR ITEMS AND ADD THEM ON A NEW PAGE *****//
+
+// grab the search input
+
+// const SEARCH = document.forms['search'].querySelector('input');
+// console.log(SEARCH);
+
+// SEARCH.addEventListener('keyup', (e) => {
+//     e.preventDefault();
+//     let searchItem = e.target.value.toLowerCase();
+//     let words = searchItem
+//                 .toLowerCase()
+//                 .split(' ')
+//                 .filter(function(word) {
+//                     return word.trim() !== '';
+//                 });
+
+//     if(words.length) {
+//         e.preventDefault();
+//         // create a regExp of all the search words
+//         let searchItemRegEx = new RegExp(words.join('|'), 'gim');
+//         let articleString = '';
+//         let filteredList = news.filter(function(article) {
+//             // create a string of all object values
+//             for (let key in article) {
+//                 if (article.hasOwnProperty(key) && article[key] !== '') {
+//                     articleString += article[key].toString().toLowerCase().trim() + ' ';
+//                 }
+//             }
+//             // add searched Item to sessionStorage
+//             window.sessionStorage.setItem('searchItem', searchItem);
+
+//             // return the news objects where a match with the search regEx is found
+//             return articleString.match(searchItemRegEx);
+//         });
+//         console.log('filteredList', filteredList);
+//         const SEARCHRESULTS = JSON.stringify(filteredList);
+//         window.sessionStorage.setItem('searchResults', SEARCHRESULTS);
+
+//         // add search result to the url as parameters
+
+//         const SEARCHURL = new URL("http://127.0.0.1:5500/search.html");
+
+//         // redirect to search.html
+//         window.location.href = SEARCHURL;
+//     }
+    
+// })
+
+
 //***** SEARCH FOR ITEMS *****//
 const SEARCH = document.getElementById('search-item');
 
@@ -271,6 +322,9 @@ SEARCH.addEventListener('keyup', (e) => {
         let textCon = paragraph.textContent;
         // use reg exp to find and match the searched text. 
         paragraph.innerHTML = textCon.replace(new RegExp(searchText, 'gi'), (match) => `<mark class="highlighted">${match}</mark>`);
+
+        let highlightedElement = document.querySelector('.highlighted');
+        highlightedElement.scrollIntoView();
         
         // use indexOf to see if the text can be found on the page. If nothing is found, value of -1 is returned and we can hide the item
         // if (textConLower.indexOf(searchText) === -1) {
@@ -294,8 +348,6 @@ SEARCH.addEventListener('keyup', (e) => {
     })
 
 })
-
-
 
 //***** RANDOM SLIDER IMAGE *****//
 // lets set an index for choosing a slider image
@@ -364,7 +416,7 @@ function displayList(items, wrapper, rowsPerPage, page) {
                 <div class="news-articles-details">
                     <h2>${article.title}</h2>
                     <p class="news-article-posted">Posted: ${article.date}</p>
-                    <p class="news-article-text">${article.description.substring(0, 90)}...</p>
+                    <p class="news-article-text" id=${article.id + 1000}>${article.description.substring(0, 90)}...</p>
                     
                     <button class="read-more" id=${article.id - 1}>Read more</button>
                 </div>
