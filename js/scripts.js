@@ -1,4 +1,3 @@
-// export {news};
 const highlights = [
     {
         id: 1,
@@ -22,7 +21,7 @@ const highlights = [
     }
 ];
 
-const news = [
+export const news = [
     {
         id: 1,
         img: './img/article01.jpg',
@@ -321,10 +320,14 @@ SEARCH.addEventListener('keyup', (e) => {
     paragraphsArray.forEach((paragraph) => {
         let textCon = paragraph.textContent;
         // use reg exp to find and match the searched text. 
-        paragraph.innerHTML = textCon.replace(new RegExp(searchText, 'gi'), (match) => `<mark class="highlighted">${match}</mark>`);
 
-        let highlightedElement = document.querySelector('.highlighted');
-        highlightedElement.scrollIntoView();
+        if (searchText.length !== 0) {
+            paragraph.innerHTML = textCon.replace(new RegExp(searchText, 'gi'), (match) => `<mark class="highlighted">${match}</mark>`);
+
+            let highlightedElement = document.querySelector('.highlighted');
+            highlightedElement.scrollIntoView();
+        }
+        
         
         // use indexOf to see if the text can be found on the page. If nothing is found, value of -1 is returned and we can hide the item
         // if (textConLower.indexOf(searchText) === -1) {

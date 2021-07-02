@@ -24,7 +24,7 @@ SEARCH.addEventListener('keyup', (e) => {
                 if (article.hasOwnProperty(key) && article[key] !== '') {
                     articleString += article[key].toString().toLowerCase().trim() + ' ';
                 }
-            }
+            }   
             // add searched Item to sessionStorage
             window.sessionStorage.setItem('searchItem', searchItem);
 
